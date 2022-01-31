@@ -2,6 +2,7 @@ package io.microanalysis.impl;
 
 import io.microanalysis.FtxApiRestClient;
 import io.microanalysis.domain.Response;
+import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 
 import java.util.List;
@@ -24,5 +25,12 @@ public class FtxApiRestClientImpl implements FtxApiRestClient {
     @Override
     public Response<List<Asset>> getAssets() {
         return executeSync(ftxApiService.getAssets());
+    }
+
+    // Futures endpoints
+
+    @Override
+    public Response<List<FundingRate>> getFundingRates(String future, Long startTime, Long endTime) {
+        return executeSync(ftxApiService.getFundingRates(future, startTime, endTime));
     }
 }

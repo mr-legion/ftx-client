@@ -3,9 +3,12 @@ package io.microanalysis.impl;
 import io.microanalysis.FtxApiClientFactory;
 import io.microanalysis.FtxApiRestClient;
 import io.microanalysis.domain.Response;
+import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,6 +22,16 @@ public class FtxApiRestClientImplTest {
     @Test
     public void getAssets_ShouldReturnAssets() {
         Response<List<Asset>> response = ftxApiRestClient.getAssets();
+        assertNotNull(response);
+        assertThat(response.getData(), is(not(empty())));
+    }
+
+    @Test
+    public void getFundingRates_ShouldReturnFundingRates() {
+        String future = "BTC-PERP";
+        long startTime = Instant.now().minus(24, ChronoUnit.HOURS).getEpochSecond();
+        long endTime = Instant.now().getEpochSecond();
+        Response<List<FundingRate>> response = ftxApiRestClient.getFundingRates(future, startTime, endTime);
         assertNotNull(response);
         assertThat(response.getData(), is(not(empty())));
     }

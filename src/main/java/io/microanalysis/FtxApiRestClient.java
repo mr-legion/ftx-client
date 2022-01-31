@@ -1,6 +1,7 @@
 package io.microanalysis;
 
 import io.microanalysis.domain.Response;
+import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 
 import java.util.List;
@@ -18,4 +19,16 @@ public interface FtxApiRestClient {
      * @return assets
      */
     Response<List<Asset>> getAssets();
+
+    // Futures endpoints
+
+    /**
+     * Get funding rates.
+     *
+     * @param future    futures name
+     * @param startTime start timestamp in seconds
+     * @param endTime   end timestamp in seconds
+     * @return funding rates
+     */
+    Response<List<FundingRate>> getFundingRates(String future, Long startTime, Long endTime);
 }
