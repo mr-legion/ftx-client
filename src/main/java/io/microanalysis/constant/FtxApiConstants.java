@@ -23,6 +23,11 @@ public final class FtxApiConstants {
     public static final String STREAM_API_BASE_URL = String.format("wss://%s/ws", BASE_DOMAIN);
 
     /**
+     * ISO offset date time pattern.
+     */
+    public static final String ISO_OFFSET_DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
+
+    /**
      * Default ToStringStyle used by toString methods.
      */
     public static final ToStringStyle TO_STRING_BUILDER_STYLE = ToStringStyle.SHORT_PREFIX_STYLE;
