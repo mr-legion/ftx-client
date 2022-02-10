@@ -6,6 +6,7 @@ import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
+import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +44,17 @@ public class FtxApiRestClientImplTest {
         Response<List<Trade>> response = ftxApiRestClient.getTrades(market, startTime, endTime);
         assertNotNull(response);
         assertThat(response.getData(), is(not(empty())));
+    }
+
+    @Test
+    public void getOrderBookForBTCUSD_ShouldReturnOrderBook() {
+        String market = "BTC/USD";
+        int limit = 20;
+        Response<OrderBook> response = ftxApiRestClient.getOrderBook(market, limit);
+        assertNotNull(response);
+        assertNotNull(response.getData());
+        assertThat(response.getData().getAsks(), is(not(empty())));
+        assertThat(response.getData().getBids(), is(not(empty())));
     }
 
     @Test

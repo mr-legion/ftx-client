@@ -4,6 +4,7 @@ import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
+import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -31,6 +32,9 @@ public interface FtxApiService {
     Call<Response<List<Trade>>> getTrades(@Path("market") String market,
                                           @Query("start_time") Long startTime,
                                           @Query("end_time") Long endTime);
+
+    @GET("/api/markets/{symbol}/orderbook")
+    Call<Response<OrderBook>> getOrderBook(@Path("symbol") String symbol, @Query("depth") Integer limit);
 
     // Futures endpoints
 
