@@ -5,6 +5,7 @@ import io.microanalysis.FtxApiRestClient;
 import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
+import io.microanalysis.domain.market.MarketTicker;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
@@ -22,6 +23,13 @@ public class FtxApiRestClientImplTest {
     @Test
     public void getAssets_ShouldReturnAssets() {
         Response<List<Asset>> response = ftxApiRestClient.getAssets();
+        assertNotNull(response);
+        assertThat(response.getData(), is(not(empty())));
+    }
+
+    @Test
+    public void getMarketTickers_ShouldReturnMarketTickers() {
+        Response<List<MarketTicker>> response = ftxApiRestClient.getMarketTickers();
         assertNotNull(response);
         assertThat(response.getData(), is(not(empty())));
     }

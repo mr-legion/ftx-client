@@ -3,6 +3,7 @@ package io.microanalysis;
 import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
+import io.microanalysis.domain.market.MarketTicker;
 
 import java.util.List;
 
@@ -19,6 +20,13 @@ public interface FtxApiRestClient {
      * @return assets
      */
     Response<List<Asset>> getAssets();
+
+    // Market endpoints
+
+    /**
+     * Get information about all markets.
+     */
+    Response<List<MarketTicker>> getMarketTickers();
 
     // Futures endpoints
 
