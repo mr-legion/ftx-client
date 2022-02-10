@@ -5,6 +5,7 @@ import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
+import io.microanalysis.domain.market.Trade;
 
 import java.util.List;
 
@@ -33,6 +34,11 @@ public class FtxApiRestClientImpl implements FtxApiRestClient {
     @Override
     public Response<List<MarketTicker>> getMarketTickers() {
         return executeSync(ftxApiService.getMarketTickers());
+    }
+
+    @Override
+    public Response<List<Trade>> getTrades(String market, Long startTime, Long endTime) {
+        return executeSync(ftxApiService.getTrades(market, startTime, endTime));
     }
 
     // Futures endpoints

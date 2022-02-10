@@ -4,8 +4,10 @@ import io.microanalysis.domain.Response;
 import io.microanalysis.domain.futures.FundingRate;
 import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
+import io.microanalysis.domain.market.Trade;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -24,6 +26,11 @@ public interface FtxApiService {
 
     @GET("/api/markets")
     Call<Response<List<MarketTicker>>> getMarketTickers();
+
+    @GET("/api/markets/{market}/trades")
+    Call<Response<List<Trade>>> getTrades(@Path("market") String market,
+                                          @Query("start_time") Long startTime,
+                                          @Query("end_time") Long endTime);
 
     // Futures endpoints
 

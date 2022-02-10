@@ -28,6 +28,11 @@ public final class FtxApiConstants {
     public static final String ISO_OFFSET_DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
 
     /**
+     * ISO offset date time pattern with milliseconds.
+     */
+    public static final String ISO_OFFSET_DATE_TIME_PATTERN_2 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX";
+
+    /**
      * Default ToStringStyle used by toString methods.
      */
     public static final ToStringStyle TO_STRING_BUILDER_STYLE = ToStringStyle.SHORT_PREFIX_STYLE;
