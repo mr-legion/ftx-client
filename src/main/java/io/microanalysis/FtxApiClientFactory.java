@@ -1,5 +1,6 @@
 package io.microanalysis;
 
+import io.microanalysis.impl.FtxApiAsyncRestClientImpl;
 import io.microanalysis.impl.FtxApiRestClientImpl;
 import io.microanalysis.impl.FtxApiService;
 import io.microanalysis.impl.FtxApiServiceGenerator;
@@ -35,5 +36,12 @@ public class FtxApiClientFactory {
      */
     public FtxApiRestClient newRestClient() {
         return new FtxApiRestClientImpl(serviceGenerator.createService(FtxApiService.class));
+    }
+
+    /**
+     * Creates a new asynchronous/non-blocking REST client.
+     */
+    public FtxApiAsyncRestClient newAsyncRestClient() {
+        return new FtxApiAsyncRestClientImpl(serviceGenerator.createService(FtxApiService.class));
     }
 }
