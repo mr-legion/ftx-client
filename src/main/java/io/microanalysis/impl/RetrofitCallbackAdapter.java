@@ -12,13 +12,13 @@ import java.util.concurrent.CompletableFuture;
 import static io.microanalysis.impl.FtxApiServiceGenerator.getFtxApiError;
 
 /**
- * An adapter/wrapper that provides a response to the {@link CompletableFuture}.
+ * An adapter/wrapper that transform a response to the {@link CompletableFuture}.
  */
-public class FtxApiCallbackAdapter<T> implements Callback<T> {
+public class RetrofitCallbackAdapter<T> implements Callback<T> {
 
     private final CompletableFuture<T> future;
 
-    public FtxApiCallbackAdapter(CompletableFuture<T> future) {
+    public RetrofitCallbackAdapter(CompletableFuture<T> future) {
         this.future = future;
     }
 
