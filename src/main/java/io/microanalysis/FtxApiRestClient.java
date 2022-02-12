@@ -27,6 +27,8 @@ public interface FtxApiRestClient {
 
     /**
      * Get information about all markets.
+     *
+     * @return market tickers
      */
     Response<List<MarketTicker>> getMarketTickers();
 
