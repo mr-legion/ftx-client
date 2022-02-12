@@ -1,9 +1,6 @@
 package io.microanalysis;
 
-import io.microanalysis.impl.FtxApiAsyncRestClientImpl;
-import io.microanalysis.impl.FtxApiRestClientImpl;
-import io.microanalysis.impl.FtxApiService;
-import io.microanalysis.impl.FtxApiServiceGenerator;
+import io.microanalysis.impl.*;
 import okhttp3.OkHttpClient;
 
 /**
@@ -11,14 +8,15 @@ import okhttp3.OkHttpClient;
  */
 public class FtxApiClientFactory {
 
+    private final OkHttpClient client;
     private final FtxApiServiceGenerator serviceGenerator;
 
     public FtxApiClientFactory() {
-        OkHttpClient client = new OkHttpClient.Builder().build();
-        this.serviceGenerator = new FtxApiServiceGenerator(client);
+        this(new OkHttpClient.Builder().build());
     }
 
     private FtxApiClientFactory(OkHttpClient client) {
+        this.client = client;
         this.serviceGenerator = new FtxApiServiceGenerator(client);
     }
 
@@ -43,5 +41,12 @@ public class FtxApiClientFactory {
      */
     public FtxApiAsyncRestClient newAsyncRestClient() {
         return new FtxApiAsyncRestClientImpl(serviceGenerator.createService(FtxApiService.class));
+    }
+
+    /**
+     * Creates a new web socket client used for handling data streams.
+     */
+    public FtxApiWebSocketClient newWebSocketClient() {
+        return new FtxApiWebSocketClientImpl(client);
     }
 }

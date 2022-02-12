@@ -16,6 +16,11 @@ public class FtxApiError {
     @JsonProperty("error")
     private String msg;
 
+    public FtxApiError(boolean success, String msg) {
+        this.success = success;
+        this.msg = msg;
+    }
+
     public boolean isSuccess() {
         return success;
     }
