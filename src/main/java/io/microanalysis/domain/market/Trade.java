@@ -40,6 +40,9 @@ public class Trade {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime time;
 
+    public Trade() {
+    }
+
     public long getId() {
         return id;
     }

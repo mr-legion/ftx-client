@@ -15,6 +15,9 @@ public class OrderBook {
     private List<Order> asks;
     private List<Order> bids;
 
+    public OrderBook() {
+    }
+
     public List<Order> getAsks() {
         return asks;
     }

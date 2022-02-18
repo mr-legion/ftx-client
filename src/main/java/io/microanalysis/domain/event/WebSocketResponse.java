@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.microanalysis.constant.FtxApiConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Web Socket response.
+ *
+ * @param <T> payload type
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WebSocketResponse<T> {
 
@@ -12,10 +17,13 @@ public class WebSocketResponse<T> {
 
     private EventType type;
 
-    private int code;
+    private Integer code;
     private String msg;
 
     private T data;
+
+    public WebSocketResponse() {
+    }
 
     public String getChannel() {
         return channel;

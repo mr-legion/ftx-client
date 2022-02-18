@@ -76,6 +76,9 @@ public class Asset {
 
     private boolean nftQuoteCurrencyEligible;
 
+    public Asset() {
+    }
+
     public String getSymbol() {
         return symbol;
     }

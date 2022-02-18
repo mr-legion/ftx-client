@@ -17,6 +17,9 @@ public class WebSocketRequest {
     @JsonProperty("op")
     private RequestType type;
 
+    public WebSocketRequest() {
+    }
+
     public WebSocketRequest(String channel, String market, RequestType type) {
         this.channel = channel;
         this.market = market;

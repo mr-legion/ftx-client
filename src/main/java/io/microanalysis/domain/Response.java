@@ -18,6 +18,9 @@ public class Response<T> {
     @JsonProperty("result")
     private T data;
 
+    public Response() {
+    }
+
     public boolean isSuccess() {
         return success;
     }

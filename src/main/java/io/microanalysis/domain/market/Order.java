@@ -17,6 +17,9 @@ public class Order {
     private double price;
     private double quantity;
 
+    public Order() {
+    }
+
     public Order(double price, double quantity) {
         this.price = price;
         this.quantity = quantity;

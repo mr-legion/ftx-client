@@ -31,6 +31,9 @@ public class FundingRate {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime time;
 
+    public FundingRate() {
+    }
+
     public String getFuture() {
         return future;
     }

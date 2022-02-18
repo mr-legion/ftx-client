@@ -102,6 +102,9 @@ public class MarketTicker {
      */
     private double volumeUsd24h;
 
+    public MarketTicker() {
+    }
+
     public String getSymbol() {
         return symbol;
     }
