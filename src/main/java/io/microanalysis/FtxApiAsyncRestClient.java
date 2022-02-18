@@ -6,6 +6,9 @@ import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
 import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
+import io.microanalysis.domain.trading.NewOrder;
+import io.microanalysis.domain.trading.NewOrderResponse;
+import io.microanalysis.domain.trading.OpenOrder;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -63,4 +66,31 @@ public interface FtxApiAsyncRestClient {
      * @return funding rates
      */
     CompletableFuture<Response<List<FundingRate>>> getFundingRates(String future, Long startTime, Long endTime);
+
+    // Trading endpoints
+
+    // Trading endpoints
+
+    /**
+     * Place a new order (asynchronous).
+     *
+     * @param order the order to submit.
+     * @return a response containing details about the newly placed order.
+     */
+    CompletableFuture<Response<NewOrderResponse>> placeOrder(NewOrder order);
+
+    /**
+     * Cancel an active order (asynchronous).
+     *
+     * @param orderId order ID
+     */
+    CompletableFuture<Response<String>> cancelOrder(long orderId);
+
+    /**
+     * Get user open orders (asynchronous).
+     *
+     * @param market the market name
+     * @return open orders.
+     */
+    CompletableFuture<Response<List<OpenOrder>>> getOpenOrders(String market);
 }

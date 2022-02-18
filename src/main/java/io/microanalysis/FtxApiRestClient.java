@@ -6,6 +6,9 @@ import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
 import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
+import io.microanalysis.domain.trading.NewOrder;
+import io.microanalysis.domain.trading.NewOrderResponse;
+import io.microanalysis.domain.trading.OpenOrder;
 
 import java.util.List;
 
@@ -62,4 +65,29 @@ public interface FtxApiRestClient {
      * @return funding rates
      */
     Response<List<FundingRate>> getFundingRates(String future, Long startTime, Long endTime);
+
+    // Trading endpoints
+
+    /**
+     * Place a new order.
+     *
+     * @param order the order to submit.
+     * @return a response containing details about the newly placed order.
+     */
+    Response<NewOrderResponse> placeOrder(NewOrder order);
+
+    /**
+     * Cancel an active order.
+     *
+     * @param orderId order ID
+     */
+    Response<String> cancelOrder(long orderId);
+
+    /**
+     * Get user open orders.
+     *
+     * @param market the market name
+     * @return open orders.
+     */
+    Response<List<OpenOrder>> getOpenOrders(String market);
 }

@@ -7,6 +7,9 @@ import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
 import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
+import io.microanalysis.domain.trading.NewOrder;
+import io.microanalysis.domain.trading.NewOrderResponse;
+import io.microanalysis.domain.trading.OpenOrder;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -61,5 +64,28 @@ public class FtxApiAsyncRestClientImpl implements FtxApiAsyncRestClient {
         CompletableFuture<Response<List<FundingRate>>> completableFuture = new CompletableFuture<>();
         ftxApiService.getFundingRates(future, startTime, endTime).enqueue(new RetrofitCallbackAdapter<>(completableFuture));
         return completableFuture;
+    }
+
+    // Trading endpoints
+
+    @Override
+    public CompletableFuture<Response<NewOrderResponse>> placeOrder(NewOrder order) {
+        CompletableFuture<Response<NewOrderResponse>> future = new CompletableFuture<>();
+        ftxApiService.placeOrder(order).enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
+    }
+
+    @Override
+    public CompletableFuture<Response<String>> cancelOrder(long orderId) {
+        CompletableFuture<Response<String>> future = new CompletableFuture<>();
+        ftxApiService.cancelOrder(orderId).enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
+    }
+
+    @Override
+    public CompletableFuture<Response<List<OpenOrder>>> getOpenOrders(String market) {
+        CompletableFuture<Response<List<OpenOrder>>> future = new CompletableFuture<>();
+        ftxApiService.getOpenOrders(market).enqueue(new RetrofitCallbackAdapter<>(future));
+        return future;
     }
 }

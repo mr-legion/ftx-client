@@ -7,6 +7,9 @@ import io.microanalysis.domain.general.Asset;
 import io.microanalysis.domain.market.MarketTicker;
 import io.microanalysis.domain.market.OrderBook;
 import io.microanalysis.domain.market.Trade;
+import io.microanalysis.domain.trading.NewOrder;
+import io.microanalysis.domain.trading.NewOrderResponse;
+import io.microanalysis.domain.trading.OpenOrder;
 
 import java.util.List;
 
@@ -52,5 +55,22 @@ public class FtxApiRestClientImpl implements FtxApiRestClient {
     @Override
     public Response<List<FundingRate>> getFundingRates(String future, Long startTime, Long endTime) {
         return executeSync(ftxApiService.getFundingRates(future, startTime, endTime));
+    }
+
+    // Trading endpoints
+
+    @Override
+    public Response<NewOrderResponse> placeOrder(NewOrder order) {
+        return executeSync(ftxApiService.placeOrder(order));
+    }
+
+    @Override
+    public Response<String> cancelOrder(long orderId) {
+        return executeSync(ftxApiService.cancelOrder(orderId));
+    }
+
+    @Override
+    public Response<List<OpenOrder>> getOpenOrders(String market) {
+        return executeSync(ftxApiService.getOpenOrders(market));
     }
 }

@@ -33,6 +33,20 @@ public final class FtxApiConstants {
     public static final String ISO_OFFSET_DATE_TIME_PATTERN_2 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX";
 
     /**
+     * HTTP Headers to be used for API-KEY authentication.
+     */
+    public static final String API_KEY_HEADER = "FTX-KEY";
+    public static final String API_SIGN_HEADER = "FTX-SIGN";
+    public static final String API_TIMESTAMP_HEADER = "FTX-TS";
+    public static final String API_SUB_ACCOUNT_HEADER = "FTX-SUBACCOUNT";
+
+    /**
+     * Decorator to indicate that an endpoint requires authorization.
+     */
+    public static final String AUTHORIZATION_REQUIRED = "AUTHORIZATION";
+    public static final String AUTHORIZATION_REQUIRED_HEADER = AUTHORIZATION_REQUIRED + ": #";
+
+    /**
      * Default ToStringStyle used by toString methods.
      */
     public static final ToStringStyle TO_STRING_BUILDER_STYLE = ToStringStyle.SHORT_PREFIX_STYLE;
