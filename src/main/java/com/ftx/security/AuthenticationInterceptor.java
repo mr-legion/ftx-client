@@ -50,7 +50,7 @@ public class AuthenticationInterceptor implements Interceptor {
 
             String signature = HmacSHA256Signer.sign(payload, apiCredentials.getSecret());
 
-            newRequestBuilder.addHeader(API_KEY_HEADER, apiCredentials.getApiKey().getValue());
+            newRequestBuilder.addHeader(API_KEY_HEADER, apiCredentials.getApiKey());
             newRequestBuilder.addHeader(API_SIGN_HEADER, signature);
             newRequestBuilder.addHeader(API_TIMESTAMP_HEADER, String.valueOf(timestamp));
 
@@ -59,7 +59,7 @@ public class AuthenticationInterceptor implements Interceptor {
                 newRequestBuilder.addHeader(API_SUB_ACCOUNT_HEADER, encodedName);
             }
 
-            newRequestBuilder.tag(ApiKey.class, apiCredentials.getApiKey());
+            newRequestBuilder.tag(String.class, apiCredentials.getApiKey());
         }
 
         // Build new request after adding the necessary authentication information

@@ -8,23 +8,23 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class ApiCredentials {
 
-    private final ApiKey apiKey;
+    private final String apiKey;
     private final String secret;
 
     private String subAccountName;
 
-    public ApiCredentials(ApiKey apiKey, String secret) {
+    public ApiCredentials(String apiKey, String secret) {
         this.apiKey = apiKey;
         this.secret = secret;
     }
 
-    public ApiCredentials(ApiKey apiKey, String secret, String subAccountName) {
+    public ApiCredentials(String apiKey, String secret, String subAccountName) {
         this.apiKey = apiKey;
         this.secret = secret;
         this.subAccountName = subAccountName;
     }
 
-    public ApiKey getApiKey() {
+    public String getApiKey() {
         return apiKey;
     }
 
@@ -39,7 +39,7 @@ public class ApiCredentials {
     @Override
     public String toString() {
         return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("apiKey", apiKey.getValue())
+                .append("apiKey", apiKey)
                 .append("secret", "****")
                 .append("subAccountName", subAccountName)
                 .toString();

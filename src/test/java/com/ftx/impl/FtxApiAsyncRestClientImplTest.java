@@ -1,17 +1,16 @@
 package com.ftx.impl;
 
 import com.ftx.FtxApiAsyncRestClient;
-import com.ftx.domain.market.MarketTicker;
 import com.ftx.FtxApiClientFactory;
 import com.ftx.domain.Response;
 import com.ftx.domain.futures.FundingRate;
 import com.ftx.domain.general.Asset;
+import com.ftx.domain.market.MarketTicker;
 import com.ftx.domain.market.OrderBook;
 import com.ftx.domain.market.Trade;
 import com.ftx.domain.trading.NewOrder;
 import com.ftx.domain.trading.OpenOrder;
 import com.ftx.security.ApiCredentials;
-import com.ftx.security.ApiKey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +37,7 @@ public class FtxApiAsyncRestClientImplTest {
         String secret = System.getenv("SECRET");
         String subAccountName = System.getenv("SUB_ACCOUNT_NAME");
 
-        ApiCredentials apiCredentials = new ApiCredentials(new ApiKey(apiKey), secret, subAccountName);
+        ApiCredentials apiCredentials = new ApiCredentials(apiKey, secret, subAccountName);
         this.ftxApiAsyncRestClient = FtxApiClientFactory.newInstance(apiCredentials).newAsyncRestClient();
     }
 
