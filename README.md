@@ -1,5 +1,5 @@
 # FTX API
 
-Unofficial Java API for the FTX exchange.
+Unofficial Java client for the FTX API.
 
 [FTX API Documentation](https://docs.ftx.com/#overview)
