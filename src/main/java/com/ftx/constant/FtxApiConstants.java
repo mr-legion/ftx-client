@@ -1,9 +1,12 @@
 package com.ftx.constant;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Constants used throughout FTX's API.
  */
-public final class FtxApiConstants {
+@UtilityClass
+public class FtxApiConstants {
 
     /**
      * Base domain.

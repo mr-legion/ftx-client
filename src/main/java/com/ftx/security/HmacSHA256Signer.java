@@ -1,5 +1,6 @@
 package com.ftx.security;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.codec.binary.Hex;
 
 import javax.crypto.Mac;
@@ -11,7 +12,8 @@ import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
 /**
  * Utility class to sign messages using HMAC-SHA256.
  */
-public final class HmacSHA256Signer {
+@UtilityClass
+public class HmacSHA256Signer {
 
     /**
      * Sign the given message using the given secret.
