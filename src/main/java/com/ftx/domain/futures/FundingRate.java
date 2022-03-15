@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import com.ftx.constant.FtxApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +16,8 @@ import static com.ftx.constant.FtxApiConstants.ISO_OFFSET_DATE_TIME_PATTERN;
 /**
  * Futures funding rate.
  */
+@NoArgsConstructor
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FundingRate {
 
@@ -31,43 +33,4 @@ public class FundingRate {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime time;
 
-    public FundingRate() {
-    }
-
-    public String getFuture() {
-        return future;
-    }
-
-    public void setFuture(String future) {
-        this.future = future;
-    }
-
-    public double getRate() {
-        return rate;
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
-    }
-
-    public void addRate(double rate) {
-        this.rate += rate;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("future", future)
-                .append("rate", rate)
-                .append("time", time)
-                .toString();
-    }
 }

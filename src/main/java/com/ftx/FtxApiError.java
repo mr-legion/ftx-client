@@ -2,12 +2,16 @@ package com.ftx;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ftx.constant.FtxApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * FTX API error.
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FtxApiError {
 
@@ -16,35 +20,4 @@ public class FtxApiError {
     @JsonProperty("error")
     private String msg;
 
-    public FtxApiError() {
-    }
-
-    public FtxApiError(boolean success, String msg) {
-        this.success = success;
-        this.msg = msg;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("success", success)
-                .append("msg", msg)
-                .toString();
-    }
 }

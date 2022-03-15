@@ -1,7 +1,5 @@
 package com.ftx.constant;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 /**
  * Constants used throughout FTX's API.
  */
@@ -45,9 +43,4 @@ public final class FtxApiConstants {
      */
     public static final String AUTHORIZATION_REQUIRED = "AUTHORIZATION";
     public static final String AUTHORIZATION_REQUIRED_HEADER = AUTHORIZATION_REQUIRED + ": #";
-
-    /**
-     * Default ToStringStyle used by toString methods.
-     */
-    public static final ToStringStyle TO_STRING_BUILDER_STYLE = ToStringStyle.SHORT_PREFIX_STYLE;
 }

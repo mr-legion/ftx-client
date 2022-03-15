@@ -1,44 +1,18 @@
 package com.ftx.domain.market;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.ftx.constant.FtxApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
  * Market order book.
  */
+@NoArgsConstructor
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderBook {
-
     private List<Order> asks;
     private List<Order> bids;
-
-    public OrderBook() {
-    }
-
-    public List<Order> getAsks() {
-        return asks;
-    }
-
-    public void setAsks(List<Order> asks) {
-        this.asks = asks;
-    }
-
-    public List<Order> getBids() {
-        return bids;
-    }
-
-    public void setBids(List<Order> bids) {
-        this.bids = bids;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("asks", asks)
-                .append("bids", bids)
-                .toString();
-    }
 }

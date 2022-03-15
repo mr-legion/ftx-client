@@ -2,12 +2,16 @@ package com.ftx.domain.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ftx.constant.FtxApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Web socket request.
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WebSocketRequest {
 
@@ -16,46 +20,4 @@ public class WebSocketRequest {
 
     @JsonProperty("op")
     private RequestType type;
-
-    public WebSocketRequest() {
-    }
-
-    public WebSocketRequest(String channel, String market, RequestType type) {
-        this.channel = channel;
-        this.market = market;
-        this.type = type;
-    }
-
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
-    }
-
-    public String getMarket() {
-        return market;
-    }
-
-    public void setMarket(String market) {
-        this.market = market;
-    }
-
-    public RequestType getType() {
-        return type;
-    }
-
-    public void setType(RequestType type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("channel", channel)
-                .append("market", market)
-                .append("type", type)
-                .toString();
-    }
 }

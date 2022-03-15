@@ -2,14 +2,16 @@ package com.ftx.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ftx.constant.FtxApiConstants;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Response wrapper.
  *
  * @param <T> payload type
  */
+@NoArgsConstructor
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response<T> {
 
@@ -18,30 +20,4 @@ public class Response<T> {
     @JsonProperty("result")
     private T data;
 
-    public Response() {
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, FtxApiConstants.TO_STRING_BUILDER_STYLE)
-                .append("success", success)
-                .append("data", data)
-                .toString();
-    }
 }
