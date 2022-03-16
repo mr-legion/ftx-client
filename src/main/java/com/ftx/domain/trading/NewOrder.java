@@ -27,21 +27,21 @@ public class NewOrder {
     private Double price;
 
     @JsonProperty("size")
-    private double quantity;
+    private Double quantity;
 
     private OrderSide side;
     private OrderType type;
 
-    private boolean reduceOnly;
-    private boolean postOnly;
-    private boolean ioc;
+    private Boolean reduceOnly;
+    private Boolean postOnly;
+    private Boolean ioc;
 
     /**
      * Client order id.
      */
     private String clientId;
 
-    public NewOrder(String market, Double price, double quantity, OrderSide side, OrderType type) {
+    public NewOrder(String market, Double price, Double quantity, OrderSide side, OrderType type) {
         this.market = market;
         this.price = price;
         this.quantity = quantity;

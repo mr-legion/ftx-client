@@ -14,10 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FtxApiError {
-
-    private boolean success;
-
+    private Boolean success;
     @JsonProperty("error")
     private String msg;
-
 }

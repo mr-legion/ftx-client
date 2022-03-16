@@ -14,8 +14,8 @@ public class OrderSerializer extends JsonSerializer<Order> {
     @Override
     public void serialize(Order order, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         gen.writeStartArray();
-        gen.writeString(String.valueOf(order.getPrice()));
-        gen.writeString(String.valueOf(order.getQuantity()));
+        gen.writeString(order.getPrice().toString());
+        gen.writeString(order.getQuantity().toString());
         gen.writeEndArray();
     }
 }

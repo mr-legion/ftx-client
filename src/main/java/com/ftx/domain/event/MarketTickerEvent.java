@@ -30,6 +30,6 @@ public class MarketTickerEvent {
     /**
      * Timestamp in seconds.
      */
-    private long time;
+    private Long time;
 
 }

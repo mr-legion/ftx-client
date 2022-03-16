@@ -26,7 +26,7 @@ public class FundingRate {
      */
     private String future;
 
-    private double rate;
+    private Double rate;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ISO_OFFSET_DATE_TIME_PATTERN)
     @JsonSerialize(using = LocalDateTimeSerializer.class)

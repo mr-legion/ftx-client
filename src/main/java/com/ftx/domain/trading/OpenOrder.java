@@ -24,7 +24,7 @@ import static com.ftx.constant.FtxApiConstants.ISO_OFFSET_DATE_TIME_PATTERN_2;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenOrder {
 
-    private long id;
+    private Long id;
 
     private String market;
     private String future;
@@ -32,18 +32,18 @@ public class OpenOrder {
     private OrderSide side;
     private OrderType type;
 
-    private double price;
-    private double avgFillPrice;
-    private double size;
+    private Double price;
+    private Double avgFillPrice;
+    private Double size;
 
-    private double filledSize;
-    private double remainingSize;
+    private Double filledSize;
+    private Double remainingSize;
 
     private OrderStatus status;
 
-    private boolean reduceOnly;
-    private boolean postOnly;
-    private boolean ioc;
+    private Boolean reduceOnly;
+    private Boolean postOnly;
+    private Boolean ioc;
 
     /**
      * Client order id.

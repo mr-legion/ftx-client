@@ -23,19 +23,19 @@ import static com.ftx.constant.FtxApiConstants.ISO_OFFSET_DATE_TIME_PATTERN_2;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Trade {
 
-    private long id;
+    private Long id;
 
-    private double price;
+    private Double price;
 
     @JsonProperty("size")
-    private double quantity;
+    private Double quantity;
 
     private OrderSide side;
 
     /**
      * If this trade involved a liquidation order.
      */
-    private boolean liquidation;
+    private Boolean liquidation;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ISO_OFFSET_DATE_TIME_PATTERN_2)
     @JsonSerialize(using = LocalDateTimeSerializer.class)

@@ -39,19 +39,19 @@ public class MarketTicker {
 
     private MarketType type;
 
-    private boolean enabled;
+    private Boolean enabled;
 
     /**
      * If the market is in post-only mode
      * (all orders get modified to be post-only, in addition to other settings they may have).
      */
-    private boolean postOnly;
+    private Boolean postOnly;
 
     /**
      * If the market has nonstandard restrictions on which jurisdictions can trade it.
      */
-    private boolean restricted;
-    private boolean highLeverageFeeExempt;
+    private Boolean restricted;
+    private Boolean highLeverageFeeExempt;
 
     /**
      * Current price.
@@ -73,35 +73,35 @@ public class MarketTicker {
      */
     private Double bid;
 
-    private double priceIncrement;
-    private double sizeIncrement;
+    private Double priceIncrement;
+    private Double sizeIncrement;
 
     /**
      * Minimum maker order size (if >10 orders per hour fall below this size).
      */
-    private double minProvideSize;
-    private double largeOrderThreshold;
+    private Double minProvideSize;
+    private Double largeOrderThreshold;
 
     /**
      * Change in the past hour.
      */
-    private double change1h;
+    private Double change1h;
 
     /**
      * Change in the past 24 hours.
      */
-    private double change24h;
+    private Double change24h;
 
     /**
      * Change since start of day (00:00 UTC).
      */
-    private double changeBod;
+    private Double changeBod;
 
-    private double quoteVolume24h;
+    private Double quoteVolume24h;
 
     /**
      * USD volume in past 24 hours.
      */
-    private double volumeUsd24h;
+    private Double volumeUsd24h;
 
 }

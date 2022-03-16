@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response<T> {
 
-    private boolean success;
+    private Boolean success;
 
     @JsonProperty("result")
     private T data;

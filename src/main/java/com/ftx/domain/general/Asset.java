@@ -21,42 +21,42 @@ public class Asset {
     private String name;
 
     @JsonProperty("fiat")
-    private boolean fiatMoney;
+    private Boolean fiatMoney;
 
-    private boolean usdFungible;
+    private Boolean usdFungible;
 
     /**
      * If the asset is a leveraged token.
      */
     @JsonProperty("isToken")
-    private boolean token;
+    private Boolean token;
 
     @JsonProperty("isEtf")
-    private boolean etf;
+    private Boolean etf;
 
     /**
      * If the asset is used as collateral.
      */
-    private boolean collateral;
+    private Boolean collateral;
 
-    private double collateralWeight;
+    private Double collateralWeight;
 
     /**
      * Fast conversion available.
      */
-    private boolean convertEnabled;
+    private Boolean convertEnabled;
 
-    private boolean hidden;
+    private Boolean hidden;
 
-    private boolean spotMargin;
+    private Boolean spotMargin;
 
-    private double indexPrice;
+    private Double indexPrice;
 
     @JsonProperty("canDeposit")
-    private boolean depositEnabled;
+    private Boolean depositEnabled;
 
     @JsonProperty("canWithdraw")
-    private boolean withdrawEnabled;
+    private Boolean withdrawEnabled;
 
     /**
      * Cryptocurrency networks (e.g. "omni", "erc20", "trx", "sol").
@@ -67,7 +67,7 @@ public class Asset {
     /**
      * If the network supports the tag.
      */
-    private boolean tag;
+    private Boolean tag;
 
     private String creditTo;
 
@@ -76,6 +76,6 @@ public class Asset {
     private String trc20Contract;
     private String splMint;
 
-    private boolean nftQuoteCurrencyEligible;
+    private Boolean nftQuoteCurrencyEligible;
 
 }

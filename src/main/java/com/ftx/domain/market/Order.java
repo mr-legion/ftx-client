@@ -17,6 +17,6 @@ import lombok.NoArgsConstructor;
 @JsonSerialize(using = OrderSerializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
-    private double price;
-    private double quantity;
+    private Double price;
+    private Double quantity;
 }
