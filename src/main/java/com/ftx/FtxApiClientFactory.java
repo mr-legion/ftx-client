@@ -12,19 +12,36 @@ public class FtxApiClientFactory {
     private final OkHttpClient client;
     private final FtxApiServiceGenerator serviceGenerator;
 
-    private final ApiCredentials apiCredentials;
+    private ApiCredentials apiCredentials;
 
     public FtxApiClientFactory() {
-        this(new OkHttpClient(), null);
+        OkHttpClient client = new OkHttpClient();
+        this.client = client;
+        this.serviceGenerator = new FtxApiServiceGenerator(client);
     }
 
     public FtxApiClientFactory(ApiCredentials apiCredentials) {
-        this(new OkHttpClient(), apiCredentials);
-    }
-
-    private FtxApiClientFactory(OkHttpClient client, ApiCredentials apiCredentials) {
+        OkHttpClient client = new OkHttpClient();
         this.client = client;
         this.serviceGenerator = new FtxApiServiceGenerator(client);
+        this.apiCredentials = apiCredentials;
+    }
+
+    public FtxApiClientFactory(ApiCredentials apiCredentials, ApiInteractionConfig apiInteractionConfig) {
+        this(new OkHttpClient(), apiCredentials, apiInteractionConfig);
+    }
+
+    private FtxApiClientFactory(OkHttpClient client,
+                                ApiCredentials apiCredentials,
+                                ApiInteractionConfig apiInteractionConfig) {
+        OkHttpClient newClient = client.newBuilder()
+                .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
+                .addInterceptor(new RateLimitInterceptor(
+                        apiInteractionConfig.getMaxRequestsPerSecond(),
+                        apiInteractionConfig.getMaxApiKeyUsagePerSecond()
+                )).build();
+        this.client = newClient;
+        this.serviceGenerator = new FtxApiServiceGenerator(newClient);
         this.apiCredentials = apiCredentials;
     }
 
