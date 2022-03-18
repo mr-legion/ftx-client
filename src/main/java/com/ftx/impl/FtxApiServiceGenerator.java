@@ -1,5 +1,7 @@
 package com.ftx.impl;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ftx.security.ApiCredentials;
 import com.ftx.security.AuthenticationInterceptor;
 import com.ftx.FtxApiError;
@@ -22,11 +24,16 @@ import static com.ftx.constant.FtxApiConstants.API_BASE_URL;
  */
 public class FtxApiServiceGenerator {
 
-    private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Converter.Factory converterFactory = JacksonConverterFactory.create(mapper);
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, FtxApiError> errorBodyConverter =
             (Converter<ResponseBody, FtxApiError>) converterFactory.responseBodyConverter(
                     FtxApiError.class, new Annotation[0], null);
+
+    static {
+        mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
+    }
 
     private final OkHttpClient client;
 
