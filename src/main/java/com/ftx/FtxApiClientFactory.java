@@ -31,9 +31,9 @@ public class FtxApiClientFactory {
         this(new OkHttpClient(), apiCredentials, apiInteractionConfig);
     }
 
-    private FtxApiClientFactory(OkHttpClient client,
-                                ApiCredentials apiCredentials,
-                                ApiInteractionConfig apiInteractionConfig) {
+    public FtxApiClientFactory(OkHttpClient client,
+                               ApiCredentials apiCredentials,
+                               ApiInteractionConfig apiInteractionConfig) {
         OkHttpClient newClient = client.newBuilder()
                 .proxySelector(new CustomProxySelector(apiInteractionConfig.getProxies()))
                 .addInterceptor(new RateLimitInterceptor(
